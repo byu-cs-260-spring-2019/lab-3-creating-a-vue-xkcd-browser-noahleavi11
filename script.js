@@ -7,14 +7,14 @@ let app = new Vue({
     max: '',
     addedName: '',
     addedComment: '',
-    comments: {},
+    comments: {    },
     current: {
       title: '',
       img: '',
       alt: ''
     },
     loading: true,
-    ratings:{},
+    ratings:{    },
   },
   created() {
     this.xkcd();
@@ -80,9 +80,15 @@ let app = new Vue({
       this.ratings[this.number].sum += rating;
       this.ratings[this.number].total += 1;
     },
-    // avgRating() {
-    //   if ()
-    // }
+    avgRating(comicNumber) {
+      if (this.ratings.length !== 0 && this.ratings[comicNumber]){
+        console.log('some');
+        return ((this.ratings[comicNumber].sum / this.ratings[comicNumber].total).toFixed(2));
+      } else {
+        console.log('none');
+        return 'None';
+      }
+    },
   },
   computed: {
     month() {

@@ -2,8 +2,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>XKCD Browser</title>
 </head>
 
@@ -19,14 +20,15 @@
         <button v-on:click="previousComic">Previous</button>
         <button v-on:click="randomComic">Random</button>
         <button v-on:click="nextComic">Next</button>
-        <button v-on:click="lastComic">Last Commic</button>
+        <button v-on:click="lastComic">Last Comic</button>
       </p>
       <h2>{{current.safe_title}}</h2>
       <img v-bind:src="current.img" v-bind:alt="current.alt">
       <p>{{current.alt}}</p>
       <p><i>#{{current.num}}, drawn on {{current.day}} {{month}} {{current.year}}</i></p>
       <star-rating @rating-selected ="setRating"></star-rating>
-      <p>Average Rating: {{<!--ratings.avg-->}}</p>
+      <!-- <p>Average Rating: {{ratings[current.num].total}}</p> -->
+      <p>Average Rating: {{avgRating(current.num)}}</p>
       <h3>Add a Comment</h3>
       <form v-on:submit.prevent="addComment">
         <input v-model="addedName" placeholder="Name"></p>
@@ -42,6 +44,11 @@
       </div>
     </div>
   </div>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="https://github.com/byu-cs-260-spring-2019/lab-3-creating-a-vue-xkcd-browser-noahleavi11">Noah's GitHub Page</a>
+    </li>
+  </ul>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
